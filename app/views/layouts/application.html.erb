@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NewRailsProject</title>
+    <title>Blocipedia</title>
     <%= csrf_meta_tags %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li><%= link_to "Home", welcome_index_path %></li>
+        <li><%= link_to "About", welcome_about_path %></li>
+        <li><%= link_to "Contact", welcome_contact_path %></li>
+        <% if !user_signed_in? %>
+        <li class="pull-right"><%= link_to "Login", new_user_session_path %><li>
+        <% end %>
+        <% if user_signed_in? %>
+
+        <li class="pull-right"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+        <li class="pull-right"><%= link_to(current_user.email, welcome_index_path) %></li>
+        <% end %>
+      </ul>
+      <h1> Blocipedia: Social, Markdown Wikis </h1>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+
   </body>
 </html>
