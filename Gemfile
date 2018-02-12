@@ -48,6 +48,7 @@ gem 'bcrypt'
 gem 'devise'
 gem 'pundit'
 gem 'faker'
+gem 'stripe'
 
 group :development do
   gem 'listen', '~> 3.0.5'
