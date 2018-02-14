@@ -1,21 +1,24 @@
 require 'faker'
 
 10.times do
-  User.create!(
+  user = User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password,
     # standard: true,
     # admin: false,
     # premium: false
   )
+  user.confirm
 end
 users = User.all
 
 50.times do
   Wiki.create!(
+
   title: Faker::Space.galaxy,
   body: Faker::MostInterestingManInTheWorld.quote,
-  private: false
+  # private: false
+  user: users.sample
   )
 end
 wikis = Wiki.all

@@ -30,11 +30,11 @@ class ChargesController < ApplicationController
        redirect_to new_charge_path
   end
 
-  private
-
-  def user_not_authorized
-  flash[:alert] = "You are not authorized to perform this action."
-  redirect_to wikis_path
-  end
+  # private
+  #
+  # def user_not_authorized
+  # flash[:alert] = "You are not authorized to perform this action."
+  # redirect_to wikis_path
+  # end
 
 end
