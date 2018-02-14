@@ -8,6 +8,7 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
@@ -35,6 +36,16 @@
     <%= f.submit "Update" %>
   </div>
 <% end %>
+
+<h3>Account Rank Status<h3>
+  <div class="field">
+    <% if current_user.standard? %>
+       <li><%= button_to 'Upgrade Your Account', new_charge_path, method: :get,  :class => 'btn btn-danger' %></li>
+    <% elsif current_user.premium? %>
+      <%= button_to 'Downgrade Your Account', downgrades_path, method: :post, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+
 
 <h3>Cancel my account</h3>
 

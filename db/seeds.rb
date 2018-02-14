@@ -4,9 +4,9 @@ require 'faker'
   User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    standard: true,
-    admin: false,
-    premium: false
+    # standard: true,
+    # admin: false,
+    # premium: false
   )
 end
 users = User.all
@@ -19,6 +19,31 @@ users = User.all
   )
 end
 wikis = Wiki.all
+
+
+# Create an admin user
+admin = User.create!(
+  # name: 'Admin User',
+  email: 'admin@example.com',
+  password: 'helloworld',
+  role: 'admin'
+)
+admin.confirm
+
+# Create a standard user
+standard = User.create!(
+  # name: 'Standard User',
+  email: 'nhe6dc@gmail.com',
+  password: 'helloworld',
+)
+standard.confirm
+
+premium = User.create!(
+  email: 'premium@example.com',
+  password: 'helloworld',
+  role: 'premium'
+)
+premium.confirm
 
 puts "Seed finished"
 puts "#{users.count} users created"
