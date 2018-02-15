@@ -40,9 +40,11 @@
 <h3>Account Rank Status<h3>
   <div class="field">
     <% if current_user.standard? %>
-       <li><%= button_to 'Upgrade Your Account', new_charge_path, method: :get,  :class => 'btn btn-danger' %></li>
+      <%= form_tag charges_path do %>
+        <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+      <% end %>
     <% elsif current_user.premium? %>
-      <%= button_to 'Downgrade Your Account', downgrades_path, method: :post, class: 'btn btn-danger' %>
+      <%= button_to 'Downgrade Your Account, All Private Wikis will become Public' , downgrades_path, method: :post, class: 'btn btn-danger' %>
     <% end %>
   </div>
 

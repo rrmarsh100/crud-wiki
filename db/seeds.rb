@@ -17,7 +17,7 @@ users = User.all
 
   title: Faker::Space.galaxy,
   body: Faker::MostInterestingManInTheWorld.quote,
-  # private: false
+  private: false,
   user: users.sample
   )
 end
