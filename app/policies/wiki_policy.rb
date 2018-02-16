@@ -11,7 +11,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && record.private == false
+    user.present?
   end
 
   def destroy?
