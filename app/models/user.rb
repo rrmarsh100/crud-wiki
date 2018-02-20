@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
          has_many :wikis
+         has_many :collaborators
 
          after_initialize { self.role ||= :standard}
 

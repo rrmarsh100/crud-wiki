@@ -5,8 +5,9 @@ class CreateWikis < ActiveRecord::Migration[5.1]
       t.text :body
       t.boolean :private
       t.references :user, foreign_key: true
+      t.references :collaborator, index: true, foreign_key: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
